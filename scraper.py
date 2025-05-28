@@ -89,16 +89,16 @@ def download_files(pdf_links, output_dir):
     OUTPUT_PATH.mkdir(exist_ok=True)
 
     for link in pdf_links:
-        filename = link.rsplit('/', 1)[-1]
-        filepath = OUTPUT_PATH / filename
+        file_name = link.rsplit('/', 1)[-1]
+        file_path = OUTPUT_PATH / file_name
 
-        if filepath.exists():
-            print(f"{filename} already exists. Skipping.")
+        if file_path.exists():
+            print(f"{file_name} already exists. Skipping.")
             continue
 
         content = fetch_url(link)
-        filepath.write_bytes(content.content)
-        print(f"Downloaded: {filename}")
+        file_path.write_bytes(content.content)
+        print(f"Downloaded: {file_name}")
 
 # -------------------------------------------
 # Handle pagination recursively
